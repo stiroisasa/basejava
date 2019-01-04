@@ -28,17 +28,21 @@ public class  ArrayStorage {
 
     void delete(String uuid) {
         int i = 0;
+        boolean isExistResume = false;
         while (storage[i] != null) {
             if (uuid.equals(storage[i].uuid)) {
+                isExistResume = true;
                 break;
             }
             i++;
         }
-        int size = size();
-        for (int j = i; j < size - 1; j++) {
-            storage[j] = storage[j+1];
+        if (isExistResume) {
+            int size = size();
+            for (int j = i; j < size - 1; j++) {
+                storage[j] = storage[j + 1];
+            }
+            storage[size - 1] = null;
         }
-        storage[size - 1] = null;
     }
 
     /**
